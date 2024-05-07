@@ -3,17 +3,32 @@
 namespace CocktailApp.Core.Models;
 
 
-public class RestResult<TOut>
+public class RestResult<TOut> : RestResult
 {
-    public bool IsSuccess => HttpCode == HttpStatusCode.OK;
-    public Exception? Exception { get; private set; }
-    public TOut? Content { get; private set; }
-    public HttpStatusCode HttpCode { get; private set; }
+    public TOut? Content { get; protected set; }
 
-    public RestResult(HttpStatusCode httpCode, TOut? content)
+    public RestResult(HttpStatusCode httpCode, TOut? content) : base(httpCode)
+    {
+        Content = content;
+    }
+
+    public RestResult(HttpStatusCode httpCode, Exception exception): base(httpCode, exception)
+    {
+            
+    }
+
+}
+
+public class RestResult
+{
+
+    public bool IsSuccess => HttpCode == HttpStatusCode.OK;
+    public Exception? Exception { get; protected set; }
+    public HttpStatusCode HttpCode { get; protected set; }
+
+    public RestResult(HttpStatusCode httpCode)
     {
         HttpCode = httpCode;
-        Content = content;
     }
 
     public RestResult(HttpStatusCode httpCode, Exception exception)
@@ -21,5 +36,4 @@ public class RestResult<TOut>
         HttpCode = httpCode;
         Exception = exception;
     }
-
 }
