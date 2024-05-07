@@ -10,6 +10,14 @@ namespace CocktailApp.Core.Utils;
 /// </summary>
 public static partial class FontAwesomeIcons
 {
+    public static IFontCollection AddFontAwesome(this IFontCollection fontCollection)
+    {
+        fontCollection.Add(new FontDescriptor("FA6Brands.otf", "FA6Brands", null));
+        fontCollection.Add(new FontDescriptor("FA6Regular.otf", "FA6Regular", null));
+        fontCollection.Add(new FontDescriptor("FA6Solid.otf", "FA6Solid", null));
+        return fontCollection;
+    }
+
     /// <summary>
     /// fa-0 unicode value ("\u0030").
     /// <para/>

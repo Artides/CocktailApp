@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using CocktailApp.Core.Services;
+using System.Globalization;
 
 namespace CocktailApp.Core.Utils;
 
@@ -10,9 +11,10 @@ public static class StringExtension
 
     public static string Translate(this string str, params object?[] pars)
     {
-        var locStr = str;//TODO: AppRes.ResourceManager.GetString(str);
+        var translatorService = ServiceLocatorHelper.GetService<ITranslationService>();
+        var locStr = translatorService?.GetString(str) ?? string.Empty;
 
-        if (!string.IsNullOrWhiteSpace(locStr))
+        if (locStr.IsNotEmpty())
             try
             {
                 locStr = string.Format(CultureInfo.CurrentCulture, locStr, pars);

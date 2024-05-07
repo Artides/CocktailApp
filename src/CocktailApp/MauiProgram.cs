@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
+using CocktailApp.Ioc;
 
 namespace CocktailApp
 {
@@ -9,7 +11,10 @@ namespace CocktailApp
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
-				.ConfigureFonts(fonts =>
+                .UseMauiCommunityToolkit()
+				.AddServices()
+				.AddViewModels()
+                .ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

@@ -1,6 +1,6 @@
 ﻿namespace CocktailApp.Core.Services;
 
-public class NavigationServiceBase : INavigationService
+public abstract class NavigationServiceBase : INavigationService
 {
 	public void NavigateBack(params (string, object)[] parameters)
 	{

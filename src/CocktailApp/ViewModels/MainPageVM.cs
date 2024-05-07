@@ -2,10 +2,6 @@
 
 namespace CocktailApp.ViewModels;
 
-internal class MainPageVM : BaseViewModel
+internal class MainPageVM(INavigationService navigationService) : BaseViewModel(navigationService)
 {
-	public MainPageVM(INavigationService navigationService) : base(navigationService)
-	{
-	}
-
 }
