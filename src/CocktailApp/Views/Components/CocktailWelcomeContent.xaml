@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CocktailApp.Views.Components.CocktailWelcomeContent"
+             xmlns:c="clr-namespace:CocktailApp.Views.Components">
+    <Grid ColumnDefinitions="auto,*,auto">
+
+        <VerticalStackLayout x:Name="vslDrink1" Margin="0,20" Grid.Column="1">
+            <Image x:Name="imgDrink1" HeightRequest="200"/>
+            <Label x:Name="txtDrink1" Style="{StaticResource SubHeadline}"/>
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout x:Name="vslDrink2" Margin="0,20" Grid.Column="1">
+            <Image x:Name="imgDrink2" HeightRequest="200"/>
+            <Label x:Name="txtDrink2" Style="{StaticResource SubHeadline}"/>
+        </VerticalStackLayout>
+
+        <Button Text="back" Clicked="ArrowSx_Clicked"/>
+        
+        <Button Text="next" Clicked="ArrowDx_Clicked" Grid.Column="2"/>
+
+    </Grid>
+</ContentView>

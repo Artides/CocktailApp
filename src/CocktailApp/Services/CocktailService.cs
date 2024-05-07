@@ -8,8 +8,8 @@ internal class CocktailService(IApiManager ApiManager) : ICocktailService
 {
     public async Task<Drink?> GetRandomDrink()
     {
-        var response = await ApiManager.GetAsync<List<Drink>>(ApiUrls.RANDOM_COCKTAIL);
-        if (response.IsSuccess) return response.Content?.FirstOrDefault();
+        var response = await ApiManager.GetAsync<DrinksDTO>(ApiUrls.RANDOM_COCKTAIL);
+        if (response.IsSuccess) return response.Content?.Drinks?.FirstOrDefault();
 
         return null;
     }
@@ -18,8 +18,8 @@ internal class CocktailService(IApiManager ApiManager) : ICocktailService
     {
         if (name.IsEmpty()) return [];
 
-        var response = await ApiManager.GetAsync<List<Drink>>(ApiUrls.FILTER_COCKTAIL_BY_NAME + RestUtils.UrlEncode(name));
-        if (response.IsSuccess) return response.Content;
+        var response = await ApiManager.GetAsync<DrinksDTO>(ApiUrls.FILTER_COCKTAIL_BY_NAME + RestUtils.UrlEncode(name));
+        if (response.IsSuccess) return response.Content?.Drinks ?? [];
 
         return null;
     }
