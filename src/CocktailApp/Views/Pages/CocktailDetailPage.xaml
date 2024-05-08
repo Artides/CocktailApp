@@ -2,13 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CocktailApp.ViewModels"
+             xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
              x:Class="CocktailApp.Views.Pages.CocktailDetailPage"
              Title="CocktailDetailPage"
              x:DataType="vm:CocktailDetailVM">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid >
+
+        <ScrollView>
+            <VerticalStackLayout>
+
+
+                <Label Text="{Binding Drink.StrDrink}" Style="{StaticResource Headline}"/>
+
+                <Image Source="{Binding Drink.StrDrinkThumb}" Margin="60,20"/>
+
+                <Label Text="{Binding Drink.Ingredients}"/>
+                <Label Text="{Binding Drink.StrGlass}"/>
+                <Label Text="{Binding Drink.StrInstructionsIT}"/>
+                <Label Text="{Binding Drink.StrCategory}"/>
+                <Label Text="{Binding Drink.StrAlcoholic}"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" FontFamily="FA6Solid" 
+        HorizontalOptions="Start" Padding="0" VerticalOptions="Start" Margin="0,4,0,0"
+FontSize="24" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryDarkText}"
+Command="{Binding GoBackCommand}"/>
+
+    </Grid>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿namespace CocktailApp.Models;
+﻿using System.Text;
+
+namespace CocktailApp.Models;
 
 public class Drink
 {
@@ -154,4 +156,31 @@ public class Drink
 
     [JsonProperty("dateModified")]
     public DateTime? DateModified { get; set; }
+
+    [JsonIgnore]
+    public string Ingredients
+    {
+        get
+        {
+            var str = new StringBuilder();
+            if (StrIngredient1?.IsNotEmpty() == true) str.Append(StrIngredient1);
+            if (StrIngredient2?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient2);
+            if (StrIngredient3?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient3);
+            if (StrIngredient4?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient4);
+            if (StrIngredient5?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient5);
+            if (StrIngredient6?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient6);
+            if (StrIngredient7?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient7);
+            if (StrIngredient8?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient8);
+            if (StrIngredient9?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient9);
+            if (StrIngredient10?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient10);
+            if (StrIngredient11?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient11);
+            if (StrIngredient12?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient12);
+            if (StrIngredient13?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient13);
+            if (StrIngredient14?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient14);
+            if (StrIngredient15?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient15);
+
+            return str.ToString();
+        }
+    }
+
 }

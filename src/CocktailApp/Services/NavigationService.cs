@@ -1,5 +1,4 @@
-﻿using CocktailApp.Core.Services;
-using CocktailApp.ViewModels;
+﻿using CocktailApp.ViewModels;
 using CocktailApp.Views.Pages;
 
 namespace CocktailApp.Services;

@@ -8,37 +8,26 @@
              x:DataType="vm:MainPageVM">
 
 
-    <Grid RowDefinitions="*,*,auto">
+    <Grid RowDefinitions="*,*">
         <VerticalStackLayout Grid.Row="0" Spacing="25" Margin="30,30">
 
+            <Label Text="Cocktail App"
+                   Style="{StaticResource Headline}" />
 
-        <Label Text="Cocktail App"
-                   Style="{StaticResource Headline}"
-                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="Benvenuto all'applicazione che ti guiderà nel creare cocktail sempre perfetti!"
+                   Style="{StaticResource SubHeadline}"/>
 
-        <Label Text="Benvenuto all'applicazione che ti guiderà nel creare cocktail sempre perfetti!"
-                   Style="{StaticResource SubHeadline}"
-                   SemanticProperties.HeadingLevel="Level2"
-                   SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <Button  Command="{Binding SearchDrinkCommand}"
+                    Text="Ricerca un cocktail da preparare" 
+                    Padding="20,0"
+                    HorizontalOptions="Center"  VerticalOptions="Center"/>
 
+            <Label Text="oppure" Style="{StaticResource SubHeadline}"/>
+            <Label Text="scopri un nuovo cocktail:" Style="{StaticResource SubHeadline}"/>
 
-
-
-       
         </VerticalStackLayout>
-
-
 
         <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}"/>
 
-        <Button x:Name="CounterBtn"
-                Grid.Row="2"
-                Margin="36"
-             Text="Accedi" 
-                WidthRequest="200"
-             SemanticProperties.Hint="Counts the number of times you click"
-             Clicked="OnCounterClicked"
-             HorizontalOptions="Center" 
-             VerticalOptions="Center"/>
     </Grid>
 </ContentPage>

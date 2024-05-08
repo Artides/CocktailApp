@@ -2,22 +2,70 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CocktailApp.Views.Components.CocktailWelcomeContent"
+             xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
              xmlns:c="clr-namespace:CocktailApp.Views.Components">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="ImageFrameStyle">
+                <Setter Property="HeightRequest" Value="160"/>
+                <Setter Property="WidthRequest" Value="160"/>
+                <Setter Property="CornerRadius" Value="80"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Style TargetType="Image" x:Key="ImageDrinkStyle">
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="HeightRequest" Value="160"/>
+                <Setter Property="WidthRequest" Value="160"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="ArrowButtonStyle">
+                <Setter Property="FontFamily" Value="FA6Solid"/>
+                <Setter Property="FontSize" Value="50"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryDarkText}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <Grid ColumnDefinitions="auto,*,auto">
 
-        <VerticalStackLayout x:Name="vslDrink1" Margin="0,20" Grid.Column="1">
-            <Image x:Name="imgDrink1" HeightRequest="200"/>
-            <Label x:Name="txtDrink1" Style="{StaticResource SubHeadline}"/>
-        </VerticalStackLayout>
-        
-        <VerticalStackLayout x:Name="vslDrink2" Margin="0,20" Grid.Column="1">
-            <Image x:Name="imgDrink2" HeightRequest="200"/>
-            <Label x:Name="txtDrink2" Style="{StaticResource SubHeadline}"/>
+
+        <VerticalStackLayout x:Name="vslDrink1" Margin="0,20" Grid.Column="1" Spacing="24" 
+                             VerticalOptions="Center">
+            <Label x:Name="txtDrink1" Style="{StaticResource Headline}"  FontSize="Medium"/>
+            <Frame Style="{DynamicResource ImageFrameStyle}">
+                <Image x:Name="imgDrink1" Style="{DynamicResource ImageDrinkStyle}"/>
+            </Frame>
+            <VerticalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="vslDrink1_Tapped"/>
+            </VerticalStackLayout.GestureRecognizers>
         </VerticalStackLayout>
 
-        <Button Text="back" Clicked="ArrowSx_Clicked"/>
-        
-        <Button Text="next" Clicked="ArrowDx_Clicked" Grid.Column="2"/>
+        <VerticalStackLayout x:Name="vslDrink2" Margin="0,20" Grid.Column="1" Spacing="24" VerticalOptions="Center">
+            <Label x:Name="txtDrink2" Style="{StaticResource Headline}" FontSize="Medium"/>
+
+            <Frame Style="{DynamicResource ImageFrameStyle}">
+                <Image x:Name="imgDrink2" Style="{DynamicResource ImageDrinkStyle}"/>
+            </Frame>
+            <VerticalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="vslDrink2_Tapped"/>
+            </VerticalStackLayout.GestureRecognizers>
+        </VerticalStackLayout>
+
+        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" 
+                Clicked="ArrowSx_Clicked"
+                Style="{DynamicResource ArrowButtonStyle}"/>
+
+        <Button  Text="{x:Static u:FontAwesomeIcons.ChevronRight}" 
+                 Clicked="ArrowDx_Clicked"
+                 Style="{DynamicResource ArrowButtonStyle}"
+                 Grid.Column="2"/>
 
     </Grid>
 </ContentView>

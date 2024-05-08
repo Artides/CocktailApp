@@ -1,5 +1,6 @@
 ﻿using CocktailApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace CocktailApp.ViewModels;
@@ -41,4 +42,11 @@ internal partial class MainPageVM(INavigationService navigationService, ICocktai
         });
         return Task.CompletedTask;
     }
+
+    [RelayCommand]
+    void SearchDrink() 
+    {
+        _navigationService.NavigateToPage(nameof(CocktailsSearchVM));
+    }
+
 }

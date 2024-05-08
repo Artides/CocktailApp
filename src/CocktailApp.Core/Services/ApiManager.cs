@@ -74,7 +74,7 @@ namespace CocktailApp.Core.Services
 
 
                     string json = JsonConvert.SerializeObject(body);
-                    HttpContent content = null;
+                    HttpContent? content = null;
                     if (typeof(TIn) != typeof(RestVoid))
                     {
                         content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -117,7 +117,7 @@ namespace CocktailApp.Core.Services
 
 
                     string json = JsonConvert.SerializeObject(body);
-                    HttpContent content = null;
+                    HttpContent? content = null;
                     if (typeof(TIn) != typeof(RestVoid))
                     {
                         content = new StringContent(json, Encoding.UTF8, "application/json");

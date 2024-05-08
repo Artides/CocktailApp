@@ -1,11 +1,22 @@
 ﻿using CocktailApp.Constants;
 using CocktailApp.Core.Services;
 using CocktailApp.Models;
+using System.Xml.Linq;
 
 namespace CocktailApp.Services;
 
 internal class CocktailService(IApiManager ApiManager) : ICocktailService
 {
+    public async Task<IEnumerable<Drink>?> GetDrinksByFirstLetter(char letter)
+    {
+        if (!((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))) return [];
+
+        var response = await ApiManager.GetAsync<DrinksDTO>(ApiUrls.COCKTAIL_START_WITH + letter);
+        if (response.IsSuccess) return response.Content?.Drinks ?? [];
+
+        return null;
+    }
+
     public async Task<Drink?> GetRandomDrink()
     {
         var response = await ApiManager.GetAsync<DrinksDTO>(ApiUrls.RANDOM_COCKTAIL);
@@ -14,7 +25,7 @@ internal class CocktailService(IApiManager ApiManager) : ICocktailService
         return null;
     }
 
-    public async Task<IEnumerable<Drink>?> SearchDrinkByName(string name)
+    public async Task<IEnumerable<Drink>?> SearchDrinkByName(string? name)
     {
         if (name.IsEmpty()) return [];
 
