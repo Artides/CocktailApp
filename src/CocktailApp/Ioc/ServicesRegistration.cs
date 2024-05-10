@@ -13,6 +13,7 @@ namespace CocktailApp.Ioc
                 .AddSingleton<IApiManager, ApiManager>()
                 .AddSingleton<ITranslationService, TranslationService>()
                 .AddSingleton<ICocktailService, CocktailService>()
+                .AddSingleton<IIngredientService, IngredientService>()
                 ;
 
             return builder;
