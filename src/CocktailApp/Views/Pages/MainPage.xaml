@@ -5,29 +5,54 @@
              xmlns:vm="clr-namespace:CocktailApp.ViewModels"
              xmlns:m="clr-namespace:CocktailApp.Models"
              xmlns:c="clr-namespace:CocktailApp.Views.Components"
+             xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
              x:DataType="vm:MainPageVM">
 
 
-    <Grid RowDefinitions="*,*">
-        <VerticalStackLayout Grid.Row="0" Spacing="25" Margin="30,30">
+    <Grid RowDefinitions="auto,auto,*" Padding="16">
 
-            <Label Text="Cocktail App"
-                   Style="{StaticResource Headline}" />
+        <Button Text="{x:Static u:FontAwesomeIcons.Lightbulb}" Style="{StaticResource ButtonHeadline}" Command="{Binding DarkLightModeCommand}" />
+
+        <Label Text="Scopri un cocktail" Style="{StaticResource Headline}" Margin="50,0"/>
+        
+        <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}" HeightRequest="300"/>
+        
+        <VerticalStackLayout Grid.Row="2" Spacing="25" Margin="0,30">
 
             <Label Text="Benvenuto all'applicazione che ti guiderà nel creare cocktail sempre perfetti!"
                    Style="{StaticResource SubHeadline}"/>
 
-            <Button  Command="{Binding SearchDrinkCommand}"
-                    Text="Ricerca un cocktail da preparare" 
-                    Padding="20,0"
-                    HorizontalOptions="Center"  VerticalOptions="Center"/>
 
-            <Label Text="oppure" Style="{StaticResource SubHeadline}"/>
-            <Label Text="scopri un nuovo cocktail:" Style="{StaticResource SubHeadline}"/>
+            <Frame Style="{StaticResource CardStyle}">
 
+                <Grid ColumnDefinitions="60,*,60">
+
+                    <Label Text="{Static u:FontAwesomeIcons.MartiniGlass}" Style="{StaticResource CardIcons}"/>
+                    <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
+                    <Label Text="Ricerca un cocktail" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
+
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchDrinkCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Style="{StaticResource CardStyle}" >
+
+                <Grid ColumnDefinitions="60,*,60">
+
+                    <Label Text="{Static u:FontAwesomeIcons.WineBottle}" Style="{StaticResource CardIcons}"/>
+                    <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
+                    <Label Text="Ricerca un ingrediente" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
+
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchDrinkCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            
         </VerticalStackLayout>
 
-        <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}"/>
 
     </Grid>
 </ContentPage>

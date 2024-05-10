@@ -158,7 +158,7 @@ public class Drink
     public DateTime? DateModified { get; set; }
 
     [JsonIgnore]
-    public string Ingredients
+    public string IngredientsShortDescription
     {
         get
         {
@@ -178,6 +178,12 @@ public class Drink
             if (StrIngredient13?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient13);
             if (StrIngredient14?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient14);
             if (StrIngredient15?.IsNotEmpty() == true) str.Append(", ").Append(StrIngredient15);
+
+            if (str.Length > 22)
+            {
+                str.Remove(21, str.Length - 22);
+                str.Append("...");
+            }
 
             return str.ToString();
         }

@@ -49,4 +49,10 @@ internal partial class MainPageVM(INavigationService navigationService, ICocktai
         _navigationService.NavigateToPage(nameof(CocktailsSearchVM));
     }
 
+    [RelayCommand]
+    void DarkLightMode() 
+    {
+        Application.Current.UserAppTheme = Application.Current.UserAppTheme != AppTheme.Light ? AppTheme.Light : AppTheme.Dark; 
+    }
+
 }

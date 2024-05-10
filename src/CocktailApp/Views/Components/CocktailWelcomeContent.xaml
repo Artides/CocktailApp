@@ -28,7 +28,8 @@
             <Style TargetType="Button" x:Key="ArrowButtonStyle">
                 <Setter Property="FontFamily" Value="FA6Solid"/>
                 <Setter Property="FontSize" Value="50"/>
-                <Setter Property="TextColor" Value="{StaticResource PrimaryDarkText}"/>
+                <Setter Property="Opacity" Value="0.5"/>
+                <Setter Property="TextColor" Value="{StaticResource Gray600}"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
         </ResourceDictionary>
@@ -58,11 +59,11 @@
             </VerticalStackLayout.GestureRecognizers>
         </VerticalStackLayout>
 
-        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" 
+        <Button Text="{x:Static u:FontAwesomeIcons.CaretLeft}" 
                 Clicked="ArrowSx_Clicked"
                 Style="{DynamicResource ArrowButtonStyle}"/>
 
-        <Button  Text="{x:Static u:FontAwesomeIcons.ChevronRight}" 
+        <Button  Text="{x:Static u:FontAwesomeIcons.CaretRight}" 
                  Clicked="ArrowDx_Clicked"
                  Style="{DynamicResource ArrowButtonStyle}"
                  Grid.Column="2"/>

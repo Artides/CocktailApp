@@ -13,11 +13,11 @@
             <Style TargetType="Frame" x:Key="ImageFrameStyle">
                 <Setter Property="HeightRequest" Value="60"/>
                 <Setter Property="WidthRequest" Value="60"/>
-                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="CornerRadius" Value="30"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="IsClippedToBounds" Value="True"/>
                 <Setter Property="Padding" Value="0"/>
-                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
                 <Setter Property="Margin" Value="0"/>
             </Style>
 
@@ -31,15 +31,21 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="auto,auto,*" Padding="16">
+    <Grid RowDefinitions="auto,auto,*" RowSpacing="12" Padding="16">
 
-        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" FontFamily="FA6Solid" HorizontalOptions="Start" Padding="0" 
-                FontSize="24" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryDarkText}"
-                Command="{Binding GoBackCommand}"/>
+        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" Style="{StaticResource ButtonHeadline}" Command="{Binding GoBackCommand}"/>
 
-        <Label Text="Cocktails" Style="{StaticResource Headline}"/>
+        <Label Text="Cocktails" Style="{StaticResource Headline}" Margin="50,0"/>
 
-        <Entry Text="{Binding SearchString}" Placeholder="Cerca" Grid.Row="1"/>
+        <Frame Style="{StaticResource CardStyle}" Grid.Row="1" Padding="0,4">
+            <Grid ColumnDefinitions="24,*" Margin="12,0" ColumnSpacing="6">
+                <Label Text="{Static u:FontAwesomeIcons.MagnifyingGlass}" Style="{StaticResource CardIcons}"/>
+
+                <Entry Text="{Binding SearchString}" Placeholder="Cerca" Grid.Column="1"/>
+            </Grid>
+            
+        </Frame>
+        
 
         <CollectionView Grid.Row="2"
                         ItemsSource="{Binding FilteredDrinks}"
@@ -48,17 +54,19 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:Drink">
 
-                    <Frame BackgroundColor="{StaticResource Gray100}" BorderColor="{StaticResource Gray100}" CornerRadius="8" Margin="4">
+                    <Frame Style="{StaticResource CardStyle}" Margin="2,6">
 
-                        <Grid RowDefinitions="20,20,20" 
-                          ColumnDefinitions="60,*" ColumnSpacing="24" >
-                            <Frame Style="{DynamicResource ImageFrameStyle}"  Grid.RowSpan="3">
+                        <Grid RowDefinitions="25,20,20" Padding="16,0,0,0"
+                          ColumnDefinitions="60,*,60" >
+                            <Frame Style="{DynamicResource ImageFrameStyle}" Grid.RowSpan="3">
                                 <Image Source="{Binding StrDrinkThumb}" Style="{DynamicResource ImageDrinkStyle}"/>
                             </Frame>
 
-                            <Label Text="{Binding StrDrink}" Grid.Row="0" Grid.Column="1"/>
-                            <Label Text="{Binding StrAlcoholic}" Grid.Row="1" Grid.Column="1"/>
-                            <Label Text="{Binding Ingredients}" Grid.Row="2" Grid.Column="1"/>
+                            <Label Text="{Binding StrDrink}" Style="{StaticResource CardHeadline}" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding StrAlcoholic}" Style="{StaticResource CardBody}" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{Binding IngredientsShortDescription}" Style="{StaticResource CardBody}" Grid.Row="2" Grid.Column="1"/>
+
+                            <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"  Grid.RowSpan="3"/>
 
 
                             <Grid.GestureRecognizers>
@@ -70,8 +78,12 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             <CollectionView.EmptyView>
-                <Label Text="Nessun cocktail trovato"
-                   VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                <Grid ColumnDefinitions="auto,auto" HorizontalOptions="Center" ColumnSpacing="12">
+                    <Label Text="{Static u:FontAwesomeIcons.Xmark}" Style="{StaticResource CardIcons}" FontSize="30" VerticalOptions="Center" HorizontalOptions="End"/>
+                    <Label Text="Nessun cocktail trovato" Style="{StaticResource SubHeadline}" Grid.Column="1"
+                   VerticalOptions="Center" HorizontalOptions="Start"/>
+                </Grid>
             </CollectionView.EmptyView>
         </CollectionView>
     </Grid>
