@@ -70,6 +70,15 @@ namespace CocktailApp.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discover a cocktail.
         /// </summary>
         internal static string DiscoverDrink {
@@ -84,6 +93,15 @@ namespace CocktailApp.Resources.Strings {
         internal static string HomeMessage {
             get {
                 return ResourceManager.GetString("HomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        internal static string Ingredients {
+            get {
+                return ResourceManager.GetString("Ingredients", resourceCulture);
             }
         }
         
@@ -129,6 +147,15 @@ namespace CocktailApp.Resources.Strings {
         internal static string SearchIngredient {
             get {
                 return ResourceManager.GetString("SearchIngredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search a cocktail (prefetch).
+        /// </summary>
+        internal static string StaticSearchDrink {
+            get {
+                return ResourceManager.GetString("StaticSearchDrink", resourceCulture);
             }
         }
     }

@@ -19,8 +19,7 @@
         
         <VerticalStackLayout Grid.Row="2" Spacing="25" Margin="0,30">
 
-            <Label Text="{u:Translate HomeMessage}"
-                   Style="{StaticResource SubHeadline}"/>
+            <Label Text="{u:Translate HomeMessage}" Style="{StaticResource SubHeadline}" FontSize="Medium"/>
 
 
             <Frame Style="{StaticResource CardStyle}">
@@ -36,6 +35,20 @@
                     <TapGestureRecognizer Command="{Binding SearchDrinkCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
+            
+            <Frame Style="{StaticResource CardStyle}">
+
+                <Grid ColumnDefinitions="60,*,60">
+
+                    <Label Text="{Static u:FontAwesomeIcons.MartiniGlass}" Style="{StaticResource CardIcons}"/>
+                    <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
+                    <Label Text="{u:Translate StaticSearchDrink}" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
+
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding StaticSearchDrinkCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
 
             <Frame Style="{StaticResource CardStyle}" >
 
@@ -47,7 +60,7 @@
 
                 </Grid>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SearchDrinkCommand}"/>
+                    <TapGestureRecognizer Command="{Binding SearchIngredientCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
             

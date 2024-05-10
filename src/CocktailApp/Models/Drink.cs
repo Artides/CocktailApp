@@ -220,10 +220,10 @@ public class Drink
     [JsonIgnore]
     public string? Instruction => CultureInfo.CurrentCulture.TwoLetterISOLanguageName switch
     {
-        "it" => StrInstructionsIT,
-        "fr" => StrInstructionsFR,
-        "de" => StrInstructionsDE,
-        "es" => StrInstructionsES,
+        "it" => StrInstructionsIT ?? StrInstructions,
+        "fr" => StrInstructionsFR ?? StrInstructions,
+        "de" => StrInstructionsDE ?? StrInstructions,
+        "es" => StrInstructionsES ?? StrInstructions,
         _ => StrInstructions,
     };
 

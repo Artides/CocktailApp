@@ -141,4 +141,13 @@
   <data name="Instructions" xml:space="preserve">
     <value>Istruzioni</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="Ingredients" xml:space="preserve">
+    <value>Ingredienti</value>
+  </data>
+  <data name="StaticSearchDrink" xml:space="preserve">
+    <value>Ricerca un cocktail (prefetch)</value>
+  </data>
 </root>

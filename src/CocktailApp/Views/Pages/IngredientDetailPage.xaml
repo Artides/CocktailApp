@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CocktailApp.ViewModels"
+             xmlns:m="clr-namespace:CocktailApp.Models"
+             xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
+             x:Class="CocktailApp.Views.Pages.IngredientDetailPage"
+             Title="IngredientDetailPage"
+             x:DataType="vm:IngredientDetailVM">
+
+    <Grid RowDefinitions="auto,*" RowSpacing="12" Padding="16">
+
+        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}"  Style="{StaticResource ButtonHeadline}" Command="{Binding GoBackCommand}"/>
+        <Label Text="{Binding Ingredient.StrIngredient}" Style="{StaticResource Headline}" Margin="50,0"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+
+                <Frame Style="{StaticResource CardStyle}" Margin="1,6" >
+                    <VerticalStackLayout>
+
+                        <Frame Style="{StaticResource ImageFrameBigStyle}" Margin="60,20">
+                            <Image Source="{Binding Ingredient.Thumbnail}" Style="{StaticResource ImageDrinkBigStyle}" />
+                        </Frame>
+                        <Grid ColumnDefinitions="auto, auto" Margin="24,0"   RowDefinitions="auto,auto,auto" ColumnSpacing="6" RowSpacing="6">
+                            <Label Text="{Static u:FontAwesomeIcons.BottleDroplet}" Style="{StaticResource CardIcons}"/>
+                            <Label Text="{Binding Ingredient.StrAlcoholic}" Grid.Column="1"/>
+
+                            <Label Text="{Static u:FontAwesomeIcons.LinesLeaning}" Style="{StaticResource CardIcons}" Grid.Row="1"/>
+                            <Label Text="{Binding Ingredient.StrType}" Grid.Row="1" Grid.Column="1"/>
+
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource CardStyle}" Margin="1,6"  IsVisible="{Binding Ingredient.HasStrDescription}">
+                    <VerticalStackLayout Padding="12,0">
+
+                        <Label Text="{u:Translate Description}" Style="{StaticResource Headline}"/>
+
+                        <Label Text="{Binding Ingredient.StrDescription}" Style="{StaticResource CardBody}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+
+    </Grid>
+</ContentPage>

@@ -9,6 +9,9 @@ public class NavigationService : NavigationServiceBase
 	{
 		base.RegisterRoutes();
         Routing.RegisterRoute(nameof(CocktailsSearchVM), typeof(CocktailsSearchPage));
+        Routing.RegisterRoute(nameof(CocktailsStaticSearchVM), typeof(CocktailsStaticSearchPage));
         Routing.RegisterRoute(nameof(CocktailDetailVM), typeof(CocktailDetailPage));
+        Routing.RegisterRoute(nameof(IngredientsSearchVM), typeof(IngredientSearchPage));
+        Routing.RegisterRoute(nameof(IngredientDetailVM), typeof(IngredientDetailPage));
     }
 }

@@ -1,12 +1,32 @@
 ﻿using CocktailApp.Constants;
-using CocktailApp.Core.Services;
-using CocktailApp.Models;
-using System.Xml.Linq;
 
 namespace CocktailApp.Services;
 
 internal class CocktailService(IApiManager ApiManager) : ICocktailService
 {
+    public async Task<IEnumerable<Drink>?> GetAllDrinks()
+    {
+        var list = new List<Drink>();
+
+        var tasks = new List<Task<IEnumerable<Drink>?>>();
+        char letter = 'a';
+        while (letter <= 'z')
+        {
+            tasks.Add(GetDrinksByFirstLetter(letter));
+            letter++;
+        }
+
+        await Task.WhenAll(tasks);
+
+        foreach (var t in tasks)
+        {
+            if (t.Result == null) continue;
+            list.AddRange(t.Result);
+        }
+
+        return list.OrderBy(x => x.StrDrink);
+    }
+
     public async Task<IEnumerable<Drink>?> GetDrinksByFirstLetter(char letter)
     {
         if (!((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))) return [];

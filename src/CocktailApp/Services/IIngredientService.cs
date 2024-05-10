@@ -2,8 +2,8 @@
 {
     internal interface IIngredientService
     {
-        Task<Ingredient?> GetIngredientByName(string name);
-        Task<IEnumerable<Ingredient>?> SearchIngredientByName(string? name);
+        Task<Ingredient?> GetIngredientDetail(string name);
+        Task<IEnumerable<Ingredient>?> GetAllIngredients();
 
     }
 }

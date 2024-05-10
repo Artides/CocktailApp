@@ -50,6 +50,18 @@ internal partial class MainPageVM(INavigationService navigationService, ICocktai
     }
 
     [RelayCommand]
+    void StaticSearchDrink() 
+    {
+        _navigationService.NavigateToPage(nameof(CocktailsStaticSearchVM));
+    }
+
+    [RelayCommand]
+    void SearchIngredient() 
+    {
+        _navigationService.NavigateToPage(nameof(IngredientsSearchVM));
+    }
+
+    [RelayCommand]
     void DarkLightMode() 
     {
         Application.Current.UserAppTheme = Application.Current.UserAppTheme != AppTheme.Light ? AppTheme.Light : AppTheme.Dark; 

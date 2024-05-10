@@ -11,7 +11,10 @@ internal static class ViewModelRegistration
         builder.Services
             .AddTransient<MainPageVM>()
             .AddTransient<CocktailsSearchVM>()
+            .AddTransient<CocktailsStaticSearchVM>()
             .AddTransient<CocktailDetailVM>()
+            .AddTransient<IngredientsSearchVM>()
+            .AddTransient<IngredientDetailVM>()
             ;
 
         return builder;

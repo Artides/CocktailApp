@@ -6,6 +6,7 @@
              xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
              x:Class="CocktailApp.Views.Pages.CocktailDetailPage"
              Title="CocktailDetailPage"
+             x:Name="this"
              x:DataType="vm:CocktailDetailVM">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -62,6 +63,9 @@
                                     <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
 
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.GoToIngredientDetailCommand, Source={x:Reference this}}" CommandParameter="{Binding Ingredient}"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

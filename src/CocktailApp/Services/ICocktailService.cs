@@ -8,4 +8,6 @@ internal interface ICocktailService
     Task<Drink?> GetRandomDrink();
     Task<IEnumerable<Drink>?> GetDrinksByFirstLetter(char letter);
 
+    Task<IEnumerable<Drink>?> GetAllDrinks();
+
 }
