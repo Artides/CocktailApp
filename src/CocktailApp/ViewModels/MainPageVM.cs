@@ -55,4 +55,9 @@ internal partial class MainPageVM(INavigationService navigationService, ICocktai
         Application.Current.UserAppTheme = Application.Current.UserAppTheme != AppTheme.Light ? AppTheme.Light : AppTheme.Dark; 
     }
 
+    public void GoToDetail(Drink selectedDrink)
+    {
+        _navigationService.NavigateToPage(nameof(CocktailDetailVM), CocktailDetailVM.GetNavigationParameter(selectedDrink));
+    }
+
 }

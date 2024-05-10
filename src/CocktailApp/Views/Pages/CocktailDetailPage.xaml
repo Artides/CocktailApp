@@ -2,34 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CocktailApp.ViewModels"
+             xmlns:m="clr-namespace:CocktailApp.Models"
              xmlns:u="clr-namespace:CocktailApp.Core.Utils;assembly=CocktailApp.Core"
              x:Class="CocktailApp.Views.Pages.CocktailDetailPage"
              Title="CocktailDetailPage"
              x:DataType="vm:CocktailDetailVM">
-    <Grid >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="FrameMeasureStyle">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource White}}"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelMeasureStyle">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="12,0"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <ScrollView>
+    <Grid RowDefinitions="auto,*" RowSpacing="12" Padding="16">
+
+        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}"  Style="{StaticResource ButtonHeadline}" Command="{Binding GoBackCommand}"/>
+        <Label Text="{Binding Drink.StrDrink}" Style="{StaticResource Headline}" Margin="50,0"/>
+
+        <ScrollView Grid.Row="1">
             <VerticalStackLayout>
 
+                <Frame Style="{StaticResource CardStyle}" Margin="1,6" >
+                    <VerticalStackLayout>
 
-                <Label Text="{Binding Drink.StrDrink}" Style="{StaticResource Headline}"/>
+                        <Frame Style="{StaticResource ImageFrameBigStyle}" Margin="60,20">
+                            <Image Source="{Binding Drink.StrDrinkThumb}" Style="{StaticResource ImageDrinkBigStyle}" />
+                        </Frame>
+                        <Grid ColumnDefinitions="auto, auto" Margin="24,0"   RowDefinitions="auto,auto,auto" ColumnSpacing="6" RowSpacing="6">
+                            <Label Text="{Static u:FontAwesomeIcons.BottleDroplet}" Style="{StaticResource CardIcons}"/>
+                            <Label Text="{Binding Drink.StrAlcoholic}" Grid.Column="1"/>
 
-                <Image Source="{Binding Drink.StrDrinkThumb}" Margin="60,20"/>
+                            <Label Text="{Static u:FontAwesomeIcons.LinesLeaning}" Style="{StaticResource CardIcons}" Grid.Row="1"/>
+                            <Label Text="{Binding Drink.StrCategory}" Grid.Row="1" Grid.Column="1"/>
 
-                <Label Text="{Binding Drink.Ingredients}"/>
-                <Label Text="{Binding Drink.StrGlass}"/>
-                <Label Text="{Binding Drink.StrInstructionsIT}"/>
-                <Label Text="{Binding Drink.StrCategory}"/>
-                <Label Text="{Binding Drink.StrAlcoholic}"/>
+                            <Label Text="{Static u:FontAwesomeIcons.GlassWater}" Style="{StaticResource CardIcons}" Grid.Row="2"/>
+                            <Label Text="{Binding Drink.StrGlass}" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
 
+
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Drink.Ingredients}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="m:DrinkIngredient">
+                            <Frame Style="{StaticResource CardStyle}" Margin="1,4" Padding="0">
+                                <Grid ColumnDefinitions="*,2*,60" ColumnSpacing="8">
+                                    <Frame Style="{DynamicResource FrameMeasureStyle}" />
+                                    <Label Text="{Binding Measure}" Style="{DynamicResource LabelMeasureStyle}"/>
+                                    <Label Text="{Binding Ingredient}" Style="{StaticResource CardHeadline}" HorizontalOptions="Start" Grid.Column="1"/>
+                                    <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
+
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <Frame Style="{StaticResource CardStyle}" Margin="1,6" >
+                    <VerticalStackLayout Padding="12,0">
+
+                        <Label Text="Istruzioni" Style="{StaticResource Headline}"/>
+
+                        <Label Text="{Binding Drink.Instruction}" Style="{StaticResource CardBody}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                    </VerticalStackLayout>
+                </Frame>
             </VerticalStackLayout>
 
         </ScrollView>
 
-        <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" FontFamily="FA6Solid" 
-        HorizontalOptions="Start" Padding="0" VerticalOptions="Start" Margin="0,4,0,0"
-FontSize="24" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryDarkText}"
-Command="{Binding GoBackCommand}"/>
 
     </Grid>
 </ContentPage>

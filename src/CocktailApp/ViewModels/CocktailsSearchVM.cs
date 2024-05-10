@@ -16,6 +16,9 @@ internal partial class CocktailsSearchVM : BaseViewModel
     [ObservableProperty]
     string? searchString;
 
+    [ObservableProperty]
+    bool initCompleted;
+
     char _nextLetter = 'a';
     List<Drink> _alphabeticalDrinks = [];
 
@@ -26,10 +29,15 @@ internal partial class CocktailsSearchVM : BaseViewModel
 
     public override Task OnAppearing()
     {
+        InitCompleted = false;
 
         Task.Run(() =>
         {
-            LoadByLetter();
+            if (SearchString.IsNotEmpty())
+                UpdateDrinkList(SearchString);
+            else
+                LoadByLetter();
+            InitCompleted = true;
         });
 
         return Task.CompletedTask;
@@ -49,7 +57,7 @@ internal partial class CocktailsSearchVM : BaseViewModel
     [RelayCommand]
     void GoToDetail(Drink selectedDrink)
     {
-        //TODO: force dismiss keyboard 
+        KeyboardHelper.Hide();
         _navigationService.NavigateToPage(nameof(CocktailDetailVM), CocktailDetailVM.GetNavigationParameter(selectedDrink));
     }
 
@@ -63,6 +71,11 @@ internal partial class CocktailsSearchVM : BaseViewModel
 
     partial void OnSearchStringChanged(string? value)
     {
+        UpdateDrinkList(value);
+    }
+
+    private void UpdateDrinkList(string? value)
+    {
         if (value.IsEmpty())
         {
             FilteredDrinks = _alphabeticalDrinks;
@@ -71,6 +84,5 @@ internal partial class CocktailsSearchVM : BaseViewModel
         {
             Task.Run(async () => FilteredDrinks = await _cocktailService.SearchDrinkByName(value));
         }
-
     }
 }

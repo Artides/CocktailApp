@@ -9,13 +9,13 @@
              x:DataType="vm:MainPageVM">
 
 
-    <Grid RowDefinitions="auto,auto,*" Padding="16">
+    <Grid RowDefinitions="auto,*,auto" Padding="16">
 
         <Button Text="{x:Static u:FontAwesomeIcons.Lightbulb}" Style="{StaticResource ButtonHeadline}" Command="{Binding DarkLightModeCommand}" />
 
         <Label Text="Scopri un cocktail" Style="{StaticResource Headline}" Margin="50,0"/>
         
-        <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}" HeightRequest="300"/>
+        <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}" />
         
         <VerticalStackLayout Grid.Row="2" Spacing="25" Margin="0,30">
 

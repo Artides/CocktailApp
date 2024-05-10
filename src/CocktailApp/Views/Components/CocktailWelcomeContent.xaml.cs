@@ -1,3 +1,4 @@
+using CocktailApp.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace CocktailApp.Views.Components;
@@ -38,8 +39,12 @@ public partial class CocktailWelcomeContent : ContentView
             {
                 view.imgDrink1.Source = view._drink1.StrDrinkThumb;
                 view.txtDrink1.Text = view._drink1.StrDrink;
+                view.txtAlcoholic1.Text = view._drink1?.StrAlcoholic;
+                view.txtCategory1.Text = view._drink1?.StrCategory;
+                view.txtGlass1.Text = view._drink1?.StrGlass;
             }
             view._currentIndex = 0;
+            view._drink1Visible = true;
         }
     }
 
@@ -67,6 +72,9 @@ public partial class CocktailWelcomeContent : ContentView
             _drink2 = Drinks?.ElementAt(_currentIndex);
             imgDrink2.Source = _drink2?.StrDrinkThumb;
             txtDrink2.Text = _drink2?.StrDrink;
+            txtAlcoholic2.Text = _drink2?.StrAlcoholic;
+            txtCategory2.Text = _drink2?.StrCategory;
+            txtGlass2.Text = _drink2?.StrGlass;
             vslDrink1.FadeTo(0);
             vslDrink1.TranslateTo(left ? -100 : 100, 0).ContinueWith(t => vslDrink1.TranslationX = 0);
             vslDrink2.FadeTo(1);
@@ -77,6 +85,9 @@ public partial class CocktailWelcomeContent : ContentView
             _drink1 = Drinks?.ElementAt(_currentIndex);
             imgDrink1.Source = _drink1?.StrDrinkThumb;
             txtDrink1.Text = _drink1?.StrDrink;
+            txtAlcoholic1.Text = _drink1?.StrAlcoholic;
+            txtCategory1.Text = _drink1?.StrCategory;
+            txtGlass1.Text = _drink1?.StrGlass;
             vslDrink2.FadeTo(0);
             vslDrink2.TranslateTo(left ? -100 : 100, 0).ContinueWith(t => vslDrink2.TranslationX = 0);
             vslDrink1.FadeTo(1);
@@ -85,14 +96,8 @@ public partial class CocktailWelcomeContent : ContentView
 
     }
 
-
-    private void vslDrink1_Tapped(object sender, TappedEventArgs e)
+    private void vslDrink_Tapped(object sender, TappedEventArgs e)
     {
-
-    }
-
-    private void vslDrink2_Tapped(object sender, TappedEventArgs e)
-    {
-
+        if (BindingContext is MainPageVM vm) vm.GoToDetail(_drink1Visible ? _drink1 : _drink2);
     }
 }

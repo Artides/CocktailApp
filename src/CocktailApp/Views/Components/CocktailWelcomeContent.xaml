@@ -6,24 +6,7 @@
              xmlns:c="clr-namespace:CocktailApp.Views.Components">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style TargetType="Frame" x:Key="ImageFrameStyle">
-                <Setter Property="HeightRequest" Value="160"/>
-                <Setter Property="WidthRequest" Value="160"/>
-                <Setter Property="CornerRadius" Value="80"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="IsClippedToBounds" Value="True"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="BorderColor" Value="Gray"/>
-                <Setter Property="Margin" Value="0"/>
-            </Style>
 
-            <Style TargetType="Image" x:Key="ImageDrinkStyle">
-                <Setter Property="Aspect" Value="AspectFit"/>
-                <Setter Property="HeightRequest" Value="160"/>
-                <Setter Property="WidthRequest" Value="160"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-            </Style>
 
             <Style TargetType="Button" x:Key="ArrowButtonStyle">
                 <Setter Property="FontFamily" Value="FA6Solid"/>
@@ -36,29 +19,53 @@
     </ContentView.Resources>
     <Grid ColumnDefinitions="auto,*,auto">
 
+        <Frame x:Name="vslDrink1" Style="{StaticResource CardStyle}" Margin="0,20" Grid.Column="1">
+            <VerticalStackLayout Spacing="24" VerticalOptions="Center">
+                <Label x:Name="txtDrink1" Style="{StaticResource CardHeadline}" FontSize="Medium"/>
+                <Frame Style="{DynamicResource ImageFrameBigStyle}" >
+                    <Image x:Name="imgDrink1" Style="{DynamicResource ImageDrinkBigStyle}"/>
+                </Frame>
 
-        <VerticalStackLayout x:Name="vslDrink1" Margin="0,20" Grid.Column="1" Spacing="24" 
-                             VerticalOptions="Center">
-            <Label x:Name="txtDrink1" Style="{StaticResource Headline}"  FontSize="Medium"/>
-            <Frame Style="{DynamicResource ImageFrameStyle}">
-                <Image x:Name="imgDrink1" Style="{DynamicResource ImageDrinkStyle}"/>
-            </Frame>
-            <VerticalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="vslDrink1_Tapped"/>
-            </VerticalStackLayout.GestureRecognizers>
-        </VerticalStackLayout>
+                <Grid ColumnDefinitions="auto, auto" Margin="24,0"   RowDefinitions="auto,auto,auto" ColumnSpacing="6" RowSpacing="6">
+                    <Label Text="{Static u:FontAwesomeIcons.BottleDroplet}" Style="{StaticResource CardIcons}"/>
+                    <Label x:Name="txtAlcoholic1"  Grid.Column="1"/>
 
-        <VerticalStackLayout x:Name="vslDrink2" Margin="0,20" Grid.Column="1" Spacing="24" VerticalOptions="Center">
-            <Label x:Name="txtDrink2" Style="{StaticResource Headline}" FontSize="Medium"/>
+                    <Label Text="{Static u:FontAwesomeIcons.LinesLeaning}" Style="{StaticResource CardIcons}" Grid.Row="1"/>
+                    <Label x:Name="txtCategory1" Grid.Row="1" Grid.Column="1"/>
 
-            <Frame Style="{DynamicResource ImageFrameStyle}">
-                <Image x:Name="imgDrink2" Style="{DynamicResource ImageDrinkStyle}"/>
-            </Frame>
-            <VerticalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="vslDrink2_Tapped"/>
-            </VerticalStackLayout.GestureRecognizers>
-        </VerticalStackLayout>
+                    <Label Text="{Static u:FontAwesomeIcons.GlassWater}" Style="{StaticResource CardIcons}" Grid.Row="2"/>
+                    <Label x:Name="txtGlass1" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+            </VerticalStackLayout>            
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="vslDrink_Tapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame x:Name="vslDrink2" Style="{StaticResource CardStyle}" Margin="0,20" Grid.Column="1">
+            <VerticalStackLayout Spacing="24" VerticalOptions="Center">
+                <Label x:Name="txtDrink2" Style="{StaticResource CardHeadline}" FontSize="Medium"/>
+                <Frame Style="{DynamicResource ImageFrameBigStyle}" >
+                    <Image x:Name="imgDrink2" Style="{DynamicResource ImageDrinkBigStyle}"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="vslDrink_Tapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Grid ColumnDefinitions="auto, auto" Margin="24,0"   RowDefinitions="auto,auto,auto" ColumnSpacing="6" RowSpacing="6">
+                    <Label Text="{Static u:FontAwesomeIcons.BottleDroplet}" Style="{StaticResource CardIcons}"/>
+                    <Label x:Name="txtAlcoholic2"  Grid.Column="1"/>
 
+                    <Label Text="{Static u:FontAwesomeIcons.LinesLeaning}" Style="{StaticResource CardIcons}" Grid.Row="1"/>
+                    <Label x:Name="txtCategory2" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Text="{Static u:FontAwesomeIcons.GlassWater}" Style="{StaticResource CardIcons}" Grid.Row="2"/>
+                    <Label x:Name="txtGlass2" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+            </VerticalStackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="vslDrink_Tapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        
         <Button Text="{x:Static u:FontAwesomeIcons.CaretLeft}" 
                 Clicked="ArrowSx_Clicked"
                 Style="{DynamicResource ArrowButtonStyle}"/>

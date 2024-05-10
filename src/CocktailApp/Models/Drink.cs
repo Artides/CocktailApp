@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace CocktailApp.Models;
 
@@ -188,5 +189,42 @@ public class Drink
             return str.ToString();
         }
     }
+
+    [JsonIgnore]
+    public List<DrinkIngredient> Ingredients
+    {
+        get
+        {
+            var list = new List<DrinkIngredient>();
+
+            if (StrMeasure1.IsNotEmpty() && StrIngredient1?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure1, StrIngredient1));
+            if (StrMeasure2.IsNotEmpty() && StrIngredient2?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure2, StrIngredient2));
+            if (StrMeasure3.IsNotEmpty() && StrIngredient3?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure3, StrIngredient3));
+            if (StrMeasure4.IsNotEmpty() && StrIngredient4?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure4, StrIngredient4));
+            if (StrMeasure5.IsNotEmpty() && StrIngredient5?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure5, StrIngredient5));
+            if (StrMeasure6.IsNotEmpty() && StrIngredient6?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure6, StrIngredient6));
+            if (StrMeasure7.IsNotEmpty() && StrIngredient7?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure7, StrIngredient7));
+            if (StrMeasure8.IsNotEmpty() && StrIngredient8?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure8, StrIngredient8));
+            if (StrMeasure9.IsNotEmpty() && StrIngredient9?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure9, StrIngredient9));
+            if (StrMeasure10.IsNotEmpty() && StrIngredient10?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure10, StrIngredient10));
+            if (StrMeasure11.IsNotEmpty() && StrIngredient11?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure11, StrIngredient11));
+            if (StrMeasure12.IsNotEmpty() && StrIngredient12?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure12, StrIngredient12));
+            if (StrMeasure13.IsNotEmpty() && StrIngredient13?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure13, StrIngredient13));
+            if (StrMeasure14.IsNotEmpty() && StrIngredient14?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure14, StrIngredient14));
+            if (StrMeasure15.IsNotEmpty() && StrIngredient15?.IsNotEmpty() == true) list.Add(new DrinkIngredient(StrMeasure15, StrIngredient15));
+
+            return list;
+        }
+    }
+
+    [JsonIgnore]
+    public string? Instruction => CultureInfo.CurrentCulture.TwoLetterISOLanguageName switch
+    {
+        "it" => StrInstructionsIT,
+        "fr" => StrInstructionsFR,
+        "de" => StrInstructionsDE,
+        "es" => StrInstructionsES,
+        _ => StrInstructions,
+    };
 
 }

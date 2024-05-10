@@ -8,29 +8,7 @@
              Title="CocktailsSearchPage"
              x:Name="this"
              x:DataType="vm:CocktailsSearchVM">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Frame" x:Key="ImageFrameStyle">
-                <Setter Property="HeightRequest" Value="60"/>
-                <Setter Property="WidthRequest" Value="60"/>
-                <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="IsClippedToBounds" Value="True"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="BorderColor" Value="Transparent"/>
-                <Setter Property="Margin" Value="0"/>
-            </Style>
-
-            <Style TargetType="Image" x:Key="ImageDrinkStyle">
-                <Setter Property="Aspect" Value="AspectFit"/>
-                <Setter Property="HeightRequest" Value="60"/>
-                <Setter Property="WidthRequest" Value="60"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
+    
     <Grid RowDefinitions="auto,auto,*" RowSpacing="12" Padding="16">
 
         <Button Text="{x:Static u:FontAwesomeIcons.ChevronLeft}" Style="{StaticResource ButtonHeadline}" Command="{Binding GoBackCommand}"/>
@@ -43,11 +21,12 @@
 
                 <Entry Text="{Binding SearchString}" Placeholder="Cerca" Grid.Column="1"/>
             </Grid>
-            
+
         </Frame>
-        
+
 
         <CollectionView Grid.Row="2"
+                        IsVisible="{Binding InitCompleted}"
                         ItemsSource="{Binding FilteredDrinks}"
                         RemainingItemsThreshold="5"
                         RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
@@ -58,8 +37,12 @@
 
                         <Grid RowDefinitions="25,20,20" Padding="16,0,0,0"
                           ColumnDefinitions="60,*,60" >
-                            <Frame Style="{DynamicResource ImageFrameStyle}" Grid.RowSpan="3">
-                                <Image Source="{Binding StrDrinkThumb}" Style="{DynamicResource ImageDrinkStyle}"/>
+                            <Frame Style="{StaticResource ImageFrameStyle}" Grid.RowSpan="3">
+                                <Image Source="{Binding StrDrinkThumb}" Style="{StaticResource ImageDrinkStyle}"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.GoToDetailCommand, Source={x:Reference this}}" 
+                                                          CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
 
                             <Label Text="{Binding StrDrink}" Style="{StaticResource CardHeadline}" Grid.Row="0" Grid.Column="1"/>
@@ -69,11 +52,11 @@
                             <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"  Grid.RowSpan="3"/>
 
 
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.GoToDetailCommand, Source={x:Reference this}}" 
-                                                      CommandParameter="{Binding .}"/>
-                            </Grid.GestureRecognizers>
                         </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.GoToDetailCommand, Source={x:Reference this}}" 
+                                                      CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
