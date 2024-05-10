@@ -13,13 +13,13 @@
 
         <Button Text="{x:Static u:FontAwesomeIcons.Lightbulb}" Style="{StaticResource ButtonHeadline}" Command="{Binding DarkLightModeCommand}" />
 
-        <Label Text="Scopri un cocktail" Style="{StaticResource Headline}" Margin="50,0"/>
+        <Label Text="{u:Translate DiscoverDrink}" Style="{StaticResource Headline}" Margin="50,0"/>
         
         <c:CocktailWelcomeContent Grid.Row="1" Drinks="{Binding RandomDrinks}" IsVisible="{Binding DrinksAvailables}" />
         
         <VerticalStackLayout Grid.Row="2" Spacing="25" Margin="0,30">
 
-            <Label Text="Benvenuto all'applicazione che ti guiderà nel creare cocktail sempre perfetti!"
+            <Label Text="{u:Translate HomeMessage}"
                    Style="{StaticResource SubHeadline}"/>
 
 
@@ -29,7 +29,7 @@
 
                     <Label Text="{Static u:FontAwesomeIcons.MartiniGlass}" Style="{StaticResource CardIcons}"/>
                     <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
-                    <Label Text="Ricerca un cocktail" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
+                    <Label Text="{u:Translate SearchDrink}" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
 
                 </Grid>
                 <Frame.GestureRecognizers>
@@ -43,7 +43,7 @@
 
                     <Label Text="{Static u:FontAwesomeIcons.WineBottle}" Style="{StaticResource CardIcons}"/>
                     <Label Text="{Static u:FontAwesomeIcons.ChevronRight}" Style="{StaticResource CardIcons}" Grid.Column="2"/>
-                    <Label Text="Ricerca un ingrediente" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
+                    <Label Text="{u:Translate SearchIngredient}" Style="{StaticResource CardHeadline}" Grid.Column="1"/>
 
                 </Grid>
                 <Frame.GestureRecognizers>

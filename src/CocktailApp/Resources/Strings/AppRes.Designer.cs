@@ -68,5 +68,68 @@ namespace CocktailApp.Resources.Strings {
                 return ResourceManager.GetString("App", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover a cocktail.
+        /// </summary>
+        internal static string DiscoverDrink {
+            get {
+                return ResourceManager.GetString("DiscoverDrink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to the application that will guide you in creating perfect cocktails every time!.
+        /// </summary>
+        internal static string HomeMessage {
+            get {
+                return ResourceManager.GetString("HomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructions.
+        /// </summary>
+        internal static string Instructions {
+            get {
+                return ResourceManager.GetString("Instructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No cocktails found.
+        /// </summary>
+        internal static string NoDrinkFound {
+            get {
+                return ResourceManager.GetString("NoDrinkFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search a cocktail.
+        /// </summary>
+        internal static string SearchDrink {
+            get {
+                return ResourceManager.GetString("SearchDrink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search a ingredient.
+        /// </summary>
+        internal static string SearchIngredient {
+            get {
+                return ResourceManager.GetString("SearchIngredient", resourceCulture);
+            }
+        }
     }
 }

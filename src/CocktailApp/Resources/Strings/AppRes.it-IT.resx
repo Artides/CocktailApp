@@ -120,4 +120,25 @@
   <data name="App" xml:space="preserve">
     <value>Applicazione</value>
   </data>
+  <data name="DiscoverDrink" xml:space="preserve">
+    <value>Scopri un cocktail</value>
+  </data>
+  <data name="HomeMessage" xml:space="preserve">
+    <value>Benvenuto all'applicazione che ti guiderà nel creare cocktail sempre perfetti!</value>
+  </data>
+  <data name="SearchDrink" xml:space="preserve">
+    <value>Ricerca un cocktail</value>
+  </data>
+  <data name="SearchIngredient" xml:space="preserve">
+    <value>Ricerca un ingrediente</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="NoDrinkFound" xml:space="preserve">
+    <value>Nessun cocktail trovato</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Istruzioni</value>
+  </data>
 </root>

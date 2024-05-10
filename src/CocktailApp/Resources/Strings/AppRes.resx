@@ -100,4 +100,25 @@
   <data name="App" xml:space="preserve">
     <value>App</value>
   </data>
+  <data name="DiscoverDrink" xml:space="preserve">
+    <value>Discover a cocktail</value>
+  </data>
+  <data name="HomeMessage" xml:space="preserve">
+    <value>Welcome to the application that will guide you in creating perfect cocktails every time!</value>
+  </data>
+  <data name="SearchDrink" xml:space="preserve">
+    <value>Search a cocktail</value>
+  </data>
+  <data name="SearchIngredient" xml:space="preserve">
+    <value>Search a ingredient</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="NoDrinkFound" xml:space="preserve">
+    <value>No cocktails found</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
 </root>

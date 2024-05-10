@@ -19,7 +19,7 @@
             <Grid ColumnDefinitions="24,*" Margin="12,0" ColumnSpacing="6">
                 <Label Text="{Static u:FontAwesomeIcons.MagnifyingGlass}" Style="{StaticResource CardIcons}"/>
 
-                <Entry Text="{Binding SearchString}" Placeholder="Cerca" Grid.Column="1"/>
+                <Entry Text="{Binding SearchString}" Placeholder="{u:Translate Search}" Grid.Column="1"/>
             </Grid>
 
         </Frame>
@@ -54,8 +54,7 @@
 
                         </Grid>
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.GoToDetailCommand, Source={x:Reference this}}" 
-                                                      CommandParameter="{Binding .}"/>
+                            <TapGestureRecognizer Command="{Binding BindingContext.GoToDetailCommand, Source={x:Reference this}}" CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
@@ -64,7 +63,7 @@
 
                 <Grid ColumnDefinitions="auto,auto" HorizontalOptions="Center" ColumnSpacing="12">
                     <Label Text="{Static u:FontAwesomeIcons.Xmark}" Style="{StaticResource CardIcons}" FontSize="30" VerticalOptions="Center" HorizontalOptions="End"/>
-                    <Label Text="Nessun cocktail trovato" Style="{StaticResource SubHeadline}" Grid.Column="1"
+                    <Label Text="{u:Translate NoDrinkFound}" Style="{StaticResource SubHeadline}" Grid.Column="1"
                    VerticalOptions="Center" HorizontalOptions="Start"/>
                 </Grid>
             </CollectionView.EmptyView>

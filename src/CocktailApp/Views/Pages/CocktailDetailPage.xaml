@@ -70,7 +70,7 @@
                 <Frame Style="{StaticResource CardStyle}" Margin="1,6" >
                     <VerticalStackLayout Padding="12,0">
 
-                        <Label Text="Istruzioni" Style="{StaticResource Headline}"/>
+                        <Label Text="{u:Translate Instructions}" Style="{StaticResource Headline}"/>
 
                         <Label Text="{Binding Drink.Instruction}" Style="{StaticResource CardBody}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
                     </VerticalStackLayout>
